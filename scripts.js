@@ -38,3 +38,39 @@ inputUpload.addEventListener('change', async (event) => {
     }
 });
 
+const inputTags = document.getElementById('input-tags');
+const listTags = document.querySelector('.list-tags');
+
+inputTags.addEventListener('keypress', (event) => {  
+    if(event.key === 'Enter') {
+        event.preventDefault();
+
+        const tagText = inputTags.value.trim();
+
+        if(tagText !== '') {
+            const newTag = document.createElement('li');
+            newTag.innerHTML = `<p>${tagText}</p> <img src="img/close-black.svg" alt="Fechar" class="remove-tag">`;
+
+            listTags.appendChild(newTag);
+            inputTags.value = '';
+        }
+    }
+});
+
+listTags.addEventListener('click', (event) => {
+    if(event.target.classList.contains('remove-tag')) {
+        const tag = event.target.parentElement;
+        tag.remove(tag);
+    }
+});
+
+
+const acceptedTags = ['Front-end', 'Programação', 'Data Science', 'Fullstack', 'HTML', 'CSS', 'JavaScript'];
+
+async function checkAvailableTags(tagText) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(acceptedTags.includes(tagText));
+        }, 1000);
+    });
+}

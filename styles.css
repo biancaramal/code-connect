@@ -118,6 +118,7 @@ textarea {
 
 .list-tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 18px;
 }
 
