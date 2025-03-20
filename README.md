@@ -4,32 +4,49 @@
 # Titulo do projeto
 ## Code Connect
 
-Aplicação web de lista de compras para o curso de construção de páginas dinâmicas com JavaScript.
+Projeto de upload de arquivos com HTML, CSS e JavaScript, explorando programação assíncrona.
 
 ## 🔨 Funcionalidades do projeto
 
-A aplicação permite inserir itens em uma lista de forma dinâmica, permitindo a exclusão e edição dos mesmos. Os itens terão o nome e também a data e horário que foram criados. Também é possível selecionar um checkbox para informar que o item foi comprado.
+Durante o curso, desenvolvemos a página de upload de arquivos do CodeConnect, aplicando conceitos de programação assíncrona, manipulação do DOM e boas práticas de desenvolvimento web. O projeto permite que os usuários carreguem imagens, adicionem descrições, insiram tags e publiquem as informações com feedback visual.
 
-![Inserção no campo de digitação do valor ração de gato, após, é clicado no botão de edição, onde é aberto um popup para digitar o novo do nome item, que foi digitado ração de cachorro. Em seguida, é clicado no botão de exclusão, e o item é excluído.](https://imgur.com/isPj7Xf.gif)
+![Imagem do projeto](./img/project.png)
 
-## ✔️ Técnicas e tecnologias utilizadas
+## 🛠️ Tecnologias utilizadas
 
-As técnicas e tecnologias utilizadas pra isso são:
+- **HTML**
+- **CSS**
+- **JavaScript**
+  - Promises
+  - Async/Await
+  - Try/Catch
+  - SetTimeout
+  - Manipulação do DOM (seletores, eventos e funções)
 
-- `HTML`: criação dos elementos da tela;
-- `CSS`: estilização da aplicação;
-- `JavaScript`:  gerenciamento de tarefas assíncronas em JavaScript com async/await, Promises, setTimeout, tratamento de erros e compreensão do Event Loop, Call Stack e Task Queue.
+## 🚀 Como executar o projeto
 
-## 📁 Acesso ao projeto
+### 📌 Pré-requisitos
 
-Você pode [acessar o código fonte do projeto inicial](https://github.com/alura-cursos/3801-javascript-para-web/tree/projeto-base) ou [baixá-lo](https://github.com/alura-cursos/3801-javascript-para-web/archive/refs/heads/projeto-base.zip).
+- Navegador web atualizado
+- Editor de código (opcional, recomendado: VS Code)
 
-## 🛠️ Abrir e rodar o projeto
+### 📂 Clonando o repositório
 
-Após baixar o projeto, você pode abrir com o Visual Studio Code. Para isso, no menu superior, clique em:
+```bash
+  git clone https://github.com/seu-usuario/codeconnect-upload.git
+  cd codeconnect-upload
+```
 
-- **File** > **Open Folder** (ou alguma opção similar)
-- Procure o local onde o projeto está e o selecione (Caso o projeto seja baixado via zip, é necessário extraí-lo antes de procurá-lo)
-- Por fim clique em OK
+### ▶️ Executando o projeto
 
-Ao finalizar esses passos, você pode executar a aplicação com a extensão Live Server 🏆 
+1. Abra o arquivo `index.html` no navegador
+2. Clique no botão **"Carregar Imagem"**
+3. Escolha uma imagem específica
+4. Defina o **"Nome do projeto"**, como por exemplo: `Portfólio do gato`
+5. Preencha a **descrição** com informações sobre o projeto (ex.: `Para este projeto foram usados HTML, CSS e JavaScript`)
+6. Adicione algumas **tags** no campo designado, como `Front-end, JavaScript, Fullstack, Programação`, para servir como palavras-chave do projeto
+   - Pressione **Enter** para adicionar cada nova tag à lista
+7. Opções disponíveis:
+   - **"Descarte"** para cancelar as informações
+   - **"Publicar"** para confirmar os dados
+   - Após clicar em **"Publicar"**, um alerta exibirá o feedback da ação realizada.

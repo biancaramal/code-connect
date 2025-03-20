@@ -87,14 +87,6 @@ inputTags.addEventListener('keypress', async (event) => {
 
 const buttonPost = document.querySelector('.button-post');
 
-buttonPost.addEventListener('click', async (event) => {
-    event.preventDefault();
-
-    const nameProject = document.getElementById('name').value;
-    const description = document.getElementById('description').value;
-    const tagsProject = Array.from(listTags.querySelectorAll('p')).map(tag => tag.textContent);
-});
-
 async function postProject (name, description, tags) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -108,3 +100,34 @@ async function postProject (name, description, tags) {
         }, 2000);
     });
 }
+
+buttonPost.addEventListener('click', async (event) => {
+    event.preventDefault();
+
+    const nameProject = document.getElementById('name').value;
+    const description = document.getElementById('description').value;
+    const tagsProject = Array.from(listTags.querySelectorAll('p')).map(tag => tag.textContent);
+
+    try {
+        const result = await postProject(nameProject, description, tagsProject);
+        console.log(result);
+        alert('Deu certo!');
+        buttonClean.click();
+    } catch (error) {
+        console.log('Deu errado', error);
+    }
+});
+
+const buttonClean = document.querySelector('.button-clean');
+
+buttonClean.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const form = document.querySelector('form');
+    form.reset();
+
+    imagePrincipal.src = './img/imagem1.png';
+    imageName.textContent = 'image_projeto.png';
+
+    listTags.innerHTML = '';
+});
