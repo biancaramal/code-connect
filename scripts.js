@@ -41,29 +41,12 @@ inputUpload.addEventListener('change', async (event) => {
 const inputTags = document.getElementById('input-tags');
 const listTags = document.querySelector('.list-tags');
 
-inputTags.addEventListener('keypress', (event) => {  
-    if(event.key === 'Enter') {
-        event.preventDefault();
-
-        const tagText = inputTags.value.trim();
-
-        if(tagText !== '') {
-            const newTag = document.createElement('li');
-            newTag.innerHTML = `<p>${tagText}</p> <img src="img/close-black.svg" alt="Fechar" class="remove-tag">`;
-
-            listTags.appendChild(newTag);
-            inputTags.value = '';
-        }
-    }
-});
-
 listTags.addEventListener('click', (event) => {
     if(event.target.classList.contains('remove-tag')) {
         const tag = event.target.parentElement;
         tag.remove(tag);
     }
 });
-
 
 const acceptedTags = ['Front-end', 'Programação', 'Data Science', 'Fullstack', 'HTML', 'CSS', 'JavaScript'];
 
@@ -72,5 +55,56 @@ async function checkAvailableTags(tagText) {
         setTimeout(() => {
             resolve(acceptedTags.includes(tagText));
         }, 1000);
+    });
+}
+
+inputTags.addEventListener('keypress', async (event) => {  
+    if(event.key === 'Enter') {
+        event.preventDefault();
+
+        const tagText = inputTags.value.trim();
+
+        if(tagText !== '') {
+            try {
+                const tagAvailable = await checkAvailableTags(tagText);
+                if(tagAvailable) {
+                    const newTag = document.createElement('li');
+                    newTag.innerHTML = `<p>${tagText}</p> <img src="img/close-black.svg" alt="Fechar" class="remove-tag">`;
+
+                    listTags.appendChild(newTag);
+                    inputTags.value = '';
+                } else {
+                    alert('Tag não disponível.');
+                    inputTags.value = '';
+                }
+            } catch(error) {
+                console.error('Erro ao verificar existência da tag.');
+                alert('Erro ao verificar existência da tag. Verifique o console.');
+            }
+        }
+    }
+});
+
+const buttonPost = document.querySelector('.button-post');
+
+buttonPost.addEventListener('click', async (event) => {
+    event.preventDefault();
+
+    const nameProject = document.getElementById('name').value;
+    const description = document.getElementById('description').value;
+    const tagsProject = Array.from(listTags.querySelectorAll('p')).map(tag => tag.textContent);
+});
+
+async function postProject (name, description, tags) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const newProject = Math.random() > 0.5;
+
+            if(newProject) {
+                resolve('Projeto postado com sucesso');
+            } else {
+                reject('Erro ao postar projeto');
+            }
+        }, 2000);
     });
 }
